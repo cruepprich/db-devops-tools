@@ -1,0 +1,60 @@
+{ "databaseChangeLog": [
+  {
+    "changeSet": {
+      "id": "1607018561514-1",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "dropForeignKeyConstraint": {
+            "baseTableName": "ORDERS",
+            "constraintName": "ORDERS_CUSTOMER_ID_FK"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607018561514-2",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "dropUniqueConstraint": {
+            "constraintName": "CUSTOMERS_EMAIL_UK",
+            "tableName": "CUSTOMERS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607018561514-3",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "dropTable": {
+            "tableName": "CUSTOMERS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607018561514-4",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "dropTable": {
+            "tableName": "ORDERS"
+          }
+        }]
+      
+    }
+  }
+  
+]}

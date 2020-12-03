@@ -4,6 +4,16 @@
       "include": {
         "file": "runOnChange/changelog-test_gen_cust-pkg.json"
       }
+    },
+    {
+      "include": {
+        "file": "runOnce/changelog-create-customers.json"
+      }
+    },
+    {
+      "include": {
+        "file": "runOnce/changelog-create-orders.json"
+      }
     }
   ]
 }
