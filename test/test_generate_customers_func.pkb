@@ -5,8 +5,7 @@ create or replace package body test_generate_customers_func as
     delete from customers
     where name like 'custxxx%';
 
-    --commit;
-    rollback;
+    commit;
   end;
 
   procedure gen_all is
