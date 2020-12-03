@@ -1,0 +1,224 @@
+{ "databaseChangeLog": [
+  {
+    "changeSet": {
+      "id": "1607027863280-1",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "constraints": {
+                    "primaryKey": true,
+                    "primaryKeyName": "ORDER_STATUSES_PK"
+                  },
+                  "name": "STATUS",
+                  "type": "VARCHAR2(10 BYTE)"
+                }
+              },
+              {
+                "column": {
+                  "name": "DESCRIPTION",
+                  "type": "VARCHAR2(255 BYTE)"
+                }
+              }]
+            ,
+            "tableName": "ORDER_STATUSES"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-2",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "autoIncrement": true,
+                  "constraints": {
+                    "primaryKey": true,
+                    "primaryKeyName": "CUSTOMERS_PK"
+                  },
+                  "name": "ID",
+                  "type": "NUMBER(*, 0)"
+                }
+              },
+              {
+                "column": {
+                  "name": "EMAIL",
+                  "type": "VARCHAR2(200 BYTE)"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "NAME",
+                  "type": "VARCHAR2(255 BYTE)"
+                }
+              }]
+            ,
+            "tableName": "CUSTOMERS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-3",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "createView": {
+            "fullDefinition": true,
+            "selectQuery": "CREATE OR REPLACE FORCE VIEW STATUS (ORDER_STATUS, DESCRIPTION) AS select status order_status, description from order_statuses",
+            "viewName": "STATUS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-4",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "autoIncrement": true,
+                  "constraints": {
+                    "primaryKey": true,
+                    "primaryKeyName": "ORDERS_PK"
+                  },
+                  "name": "ID",
+                  "type": "NUMBER(*, 0)"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "defaultValueComputed": "CURRENT_TIMESTAMP",
+                  "name": "ORDER_DATETIME",
+                  "type": "TIMESTAMP(6)"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "CUSTOMER_ID",
+                  "type": "NUMBER(*, 0)"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "ORDER_STATUS",
+                  "type": "VARCHAR2(10 BYTE)"
+                }
+              }]
+            ,
+            "tableName": "ORDERS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-5",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "createIndex": {
+            "columns": [
+              {
+                "column": {
+                  "name": "EMAIL"
+                }
+              }]
+            ,
+            "indexName": "CUSTOMERS_EMAIL_UK",
+            "tableName": "CUSTOMERS",
+            "unique": true
+          }
+        },
+        {
+          "addUniqueConstraint": {
+            "columnNames": "EMAIL",
+            "constraintName": "CUSTOMERS_EMAIL_UK",
+            "forIndexName": "CUSTOMERS_EMAIL_UK",
+            "tableName": "CUSTOMERS"
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-6",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "addForeignKeyConstraint": {
+            "baseColumnNames": "CUSTOMER_ID",
+            "baseTableName": "ORDERS",
+            "constraintName": "ORDERS_CUSTOMER_ID_FK",
+            "deferrable": false,
+            "initiallyDeferred": false,
+            "onDelete": "RESTRICT",
+            "onUpdate": "RESTRICT",
+            "referencedColumnNames": "ID",
+            "referencedTableName": "CUSTOMERS",
+            "validate": true
+          }
+        }]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1607027863280-7",
+      "author": "opc (generated)",
+      "changes": [
+        {
+          "addForeignKeyConstraint": {
+            "baseColumnNames": "ORDER_STATUS",
+            "baseTableName": "ORDERS",
+            "constraintName": "ORDER_STATUS_FK",
+            "deferrable": false,
+            "initiallyDeferred": false,
+            "onDelete": "RESTRICT",
+            "onUpdate": "RESTRICT",
+            "referencedColumnNames": "STATUS",
+            "referencedTableName": "ORDER_STATUSES",
+            "validate": true
+          }
+        }]
+      
+    }
+  }
+  
+]}
