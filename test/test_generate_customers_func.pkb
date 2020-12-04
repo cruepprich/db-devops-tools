@@ -17,5 +17,10 @@ create or replace package body test_generate_customers_func as
     ut.expect( generate_customers( 3 ) ).to_( equal(23) );
   end;
 
+  procedure over_limit is
+    new_name varchar2(200);
+  begin
+    ut.expect( generate_customers( 30 ) ).to_( equal(0) );
+  end;
 end test_generate_customers_func;
 /
