@@ -6,6 +6,7 @@ create or replace package test_generate_customers_func as
 
   -- %beforeall
   -- %beforeeach
+  -- %afterall
   procedure delete_added_customers;
   -- %test(Generates all requested)
   procedure gen_all;
