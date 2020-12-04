@@ -9,10 +9,7 @@ create or replace package test_generate_customers_func as
   -- %test(Generates all requested)
   procedure gen_all;
 
-  procedure gen_to_limit is
-  begin
-    ut.expect( generate_customers( 3 ) ).to_( equal(23) );
-  end;
+  procedure gen_to_limit;
 
 end test_generate_customers_func;
 /
