@@ -46,7 +46,9 @@ create or replace package body test_generate_customers_func as
   end;
 
 
-
+  -- new function pvt_test
+  -- new function pvt_test
+  -- new function pvt_test
   function pvt_test(p_number in number) is
   begin
     return p_number*10;
