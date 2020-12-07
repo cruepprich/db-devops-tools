@@ -1,4 +1,5 @@
 create or replace package body test_generate_customers_func as
+  --comment
 
   procedure delete_added_customers is
   begin
@@ -22,5 +23,6 @@ create or replace package body test_generate_customers_func as
   begin
     ut.expect( generate_customers( 30 ) ).to_( equal(0) );
   end;
+
 end test_generate_customers_func;
 /
