@@ -45,5 +45,14 @@ create or replace package body test_generate_customers_func as
     created := generate_customers( 'x' );
   end;
 
+
+
+  function pvt_test(p_number in number) is
+  begin
+    return p_number*10;
+  end;
+
+
+
 end test_generate_customers_func;
 /
