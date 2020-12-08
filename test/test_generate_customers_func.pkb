@@ -47,8 +47,9 @@ create or replace package body test_generate_customers_func as
 
 
   -- new function pvt_test
-  function pvt_test(p_number in number) is
-  return number;
+  function pvt_test(p_number in number)
+  return number
+  is
   begin
     --test
     return p_number*10;
